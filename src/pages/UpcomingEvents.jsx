@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../hooks/useAxios";
 import EventCard from "../components/EventCard";
+import Spinner from "../components/Spinner";
 
 const eventTypes = [
   "all",
@@ -72,11 +73,7 @@ const UpcomingEvents = () => {
       </div>
 
       {/* Content */}
-      {isLoading && (
-        <div className="flex justify-center py-20">
-          <span className="loading loading-spinner loading-lg text-green-600"></span>
-        </div>
-      )}
+      {isLoading && <Spinner />}        
 
       {isError && (
         <p className="text-center text-red-600 py-10">

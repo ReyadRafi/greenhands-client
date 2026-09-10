@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import AuthContext from "../context/AuthContext";
 import useAxios from "../hooks/useAxios";
 import UpdateEventModal from "../components/UpdateEventModal";
+import Spinner from "../components/Spinner";
 
 const ManageEvents = () => {
   const { user } = useContext(AuthContext);
@@ -44,11 +45,7 @@ const ManageEvents = () => {
   };
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center py-20">
-        <span className="loading loading-spinner loading-lg text-green-600"></span>
-      </div>
-    );
+    return <Spinner />;
   }
 
   if (isError) {

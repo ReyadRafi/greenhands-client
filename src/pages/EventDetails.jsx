@@ -4,6 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import AuthContext from "../context/AuthContext";
 import useAxios from "../hooks/useAxios";
+import Spinner from "../components/Spinner";    
 
 const EventDetails = () => {
   const { id } = useParams();
@@ -57,11 +58,7 @@ const EventDetails = () => {
   });
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center py-20">
-        <span className="loading loading-spinner loading-lg text-green-600"></span>
-      </div>
-    );
+    return <Spinner />;
   }
 
   if (isError || !event) {
