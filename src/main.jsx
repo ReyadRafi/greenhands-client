@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './index.css'
 import AuthProvider from './context/AuthProvider.jsx'
+import ThemeProvider from './context/ThemeProvider.jsx'
 import router from './routes/Router.jsx'
 
 const queryClient = new QueryClient();
@@ -13,8 +14,10 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <RouterProvider router={router} />
-        <Toaster position="top-center" />
+        <ThemeProvider>
+          <RouterProvider router={router} />
+          <Toaster position="top-center" />
+        </ThemeProvider>
       </AuthProvider>
     </QueryClientProvider>
   </StrictMode>,
